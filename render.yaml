@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: rag-backend-api
+    runtime: docker
+    plan: free  # Switched to free since we aren't using persistent disks
+    region: oregon 
+    
+    # Environment Variables
+    envVars:
+      - key: CHROMA_PATH
+        value: ./chroma_data # Saves to container's temporary storage
+      - key: PORT
+        value: 8000
+      - key: GROQ_API_KEY
+        sync: false 
+
+    # Disk section removed entirely. 
+    # Warning: Your vector database will be wiped every time the app redeploys or restarts.
+version: "1"
