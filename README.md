@@ -233,5 +233,5 @@ Query text, retrieved context, and selected chart images are sent to Groq. Embed
 - [ ] Consistent text/chart deletion and replacement behavior.
 - [ ] Ingestion job tracking and actionable failures.
 - [ ] Unified retrieval scoring, document filtering, and bounded context.
-- [ ] Source/citation checks and a small evaluation corpus.
+- [ ] Source/citation checks.
 - [ ] Authentication and user/document isolation before public hosting.
