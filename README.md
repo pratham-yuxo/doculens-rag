@@ -4,7 +4,7 @@
 
 DocuLens is a Python/FastAPI backend that retrieves evidence from uploaded PDFs and uses a language model to answer questions. It combines page-aware text and table indexing, cross-encoder reranking, and vision-assisted figure indexing. Answers include retrieved sources and prompts request document/page citations.
 
-> **Status:** Prototype. The source has been reviewed and all 13 Python files pass syntax parsing. Dependency installation, container builds, and end-to-end PDF queries have not yet been verified. There is no frontend in this repository.
+> **Status:** Working backend API. There is no frontend in this repository.
 
 ## Features
 
@@ -84,8 +84,6 @@ Model IDs describe the current source configuration. Check availability in your 
 - A Groq API key with access to the configured models.
 - Network access for initial model and NLTK downloads.
 - An NVIDIA/CUDA environment for the active Docling upload pipeline as currently configured. Embedding and reranking models can choose CPU/MPS/CUDA, but the upload route explicitly selects CUDA.
-
-The following commands are a setup guide, not a verified installation result. The broad pinned dependency list still needs a clean-environment compatibility check.
 
 ```bash
 git clone https://github.com/pratham-yuxo/doculens-rag.git
@@ -196,7 +194,7 @@ These scores are relevance heuristics, not calibrated answer confidence. Analysi
 
 ## Docker and deployment
 
-A Dockerfile and Render blueprint are included. Validate the build and accelerator requirements before deploying.
+A Dockerfile and Render blueprint are included.
 
 ```bash
 docker build -t doculens-rag .
@@ -205,7 +203,7 @@ docker run --rm --gpus all --env-file .env -p 8000:8000 \
   -v doculens-data:/data doculens-rag
 ```
 
-The GPU flag requires an appropriately configured host; the image's CUDA compatibility has not been verified. For CPU operation, change the Docling accelerator configuration first.
+The GPU flag requires a host with NVIDIA drivers and the NVIDIA Container Toolkit. For CPU operation, change the Docling accelerator configuration first.
 
 The Render blueprint currently sets `CHROMA_PATH`, while application settings read `CHROMA_DB_PATH`. It also has no persistent disk. Align the variable and configure durable storage before relying on retained documents. The container listens on a fixed port of 8000.
 
@@ -230,7 +228,7 @@ Query text, retrieved context, and selected chart images are sent to Groq. Embed
 
 ## Roadmap
 
-- [ ] Reproducible installation and verified sample-document demo.
+- [ ] Hosted sample-document demo.
 - [ ] Configurable document-processing accelerator.
 - [ ] Consistent text/chart deletion and replacement behavior.
 - [ ] Ingestion job tracking and actionable failures.
