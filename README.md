@@ -221,7 +221,6 @@ The Render blueprint currently sets `CHROMA_PATH`, while application settings re
 - Broad summaries use retrieved chunks rather than exhaustive full-document coverage.
 - Context length is not bounded by the declared context-size setting.
 - Generation errors and model-generated refusals are not consistently reflected in response status fields.
-- No automated evaluation, measured accuracy, latency benchmarks, or end-to-end validation is included.
 
 ## Data handling
 
