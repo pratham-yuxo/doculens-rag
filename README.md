@@ -235,9 +235,3 @@ Query text, retrieved context, and selected chart images are sent to Groq. Embed
 - [ ] Unified retrieval scoring, document filtering, and bounded context.
 - [ ] Source/citation checks and a small evaluation corpus.
 - [ ] Authentication and user/document isolation before public hosting.
-
-## Source acknowledgment
-
-This repository starts from [VanshSuri234/python_llm_backend](https://github.com/VanshSuri234/python_llm_backend), revision `1f42456bb6d6d29718a0821d7364417e6bea1dc4`. The initial import retains that implementation; the DocuLens name and documentation describe this continuation.
-
-No license file was present in the reviewed source snapshot. No new license is asserted here.
